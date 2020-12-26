@@ -26,4 +26,41 @@ This Application is designed to provide a platform for discussions and query res
 
 # Snapshots of the Website
 * Login Page
+
    ![Screenshot](Snapshots/Login.png)
+   
+
+* Welcome Page (Just After Login)
+
+   ![Screenshot](Snapshots/Welcome.png)
+   
+
+* Developers Chat Room
+
+   ![Screenshot](Snapshots/DevRoom.png)
+   
+
+* Dance Chat Room
+
+   ![Screenshot](Snapshots/DanceRoom.png)
+   
+
+* Study Chat Room
+
+   ![Screenshot](Snapshots/StudyRoom.png)
+   
+
+* Making New Chat Room
+
+   ![Screenshot](Snapshots/NewRoom.png)
+   
+
+* Competitive Coders Chat Room
+
+   ![Screenshot](Snapshots/CompCodersRoom.png)
+   
+
+* Emoji Picker
+
+   ![Screenshot](Snapshots/EmojiPicker.png)
+   
