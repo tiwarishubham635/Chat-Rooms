@@ -25,6 +25,5 @@ This Application is designed to provide a platform for discussions and query res
   3. Use "npm start" to run the development server  
 
 # Snapshots of the Website
-* [Artificial intelligence]
-* [Backtracking](/code/backtracking)
+* Login Page
    ![Screenshot](Snapshots/Login.png)
