@@ -23,3 +23,6 @@ This Application is designed to provide a platform for discussions and query res
   1. Clone the repository using "git clone https://github.com/tiwarishubham635/Chat-Rooms.git"
   2. Use "npm install" to install node_modules required.
   3. Use "npm start" to run the development server  
+
+# Snapshots of the Website
+   ![Screenshot](Snapshots/Screenshot (537).png)
