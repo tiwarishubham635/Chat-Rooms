@@ -4,6 +4,7 @@ An Application for Chats and Discussions
 # Demo
 https://whatsapp-clone-ea11a.web.app/
 
+# Description
 This Application is designed to provide a platform for discussions and query resolution regarding topics like Development, Competitive Coding, Dance or Studies in general etc. It has been designed on the lines of the WhatsApp Clone.
 
 # Salient features:
