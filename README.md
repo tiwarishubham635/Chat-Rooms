@@ -60,7 +60,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/CompCodersRoom.png)
    
 
-* Emoji Picker
+* ### Emoji Picker
 
    ![Screenshot](Snapshots/EmojiPicker.png)
    
