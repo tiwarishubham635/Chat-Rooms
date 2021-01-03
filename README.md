@@ -40,7 +40,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/DevRoom.png)
    
 
-* Dance Chat Room
+* ### Dance Chat Room
 
    ![Screenshot](Snapshots/DanceRoom.png)
    
