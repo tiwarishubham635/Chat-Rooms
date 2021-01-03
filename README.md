@@ -25,7 +25,7 @@ This Application is designed to provide a platform for discussions and query res
   3. Use "npm start" to run the development server  
 
 ## Snapshots of the Website
-* Login Page
+* # Login Page
 
    ![Screenshot](Snapshots/Login.png)
    
