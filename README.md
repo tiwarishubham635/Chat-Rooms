@@ -55,7 +55,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/NewRoom.png)
    
 
-* Competitive Coders Chat Room
+* ### Competitive Coders Chat Room
 
    ![Screenshot](Snapshots/CompCodersRoom.png)
    
