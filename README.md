@@ -15,7 +15,7 @@ This Application is designed to provide a platform for discussions and query res
   5. Emoji Picker for chats.
   6. Complete chatting application.
 
-# This Application is made using:
+## This Application is made using:
   1. React.Js
   2. Firebase
 
