@@ -45,7 +45,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/DanceRoom.png)
    
 
-* Study Chat Room
+* ### Study Chat Room
 
    ![Screenshot](Snapshots/StudyRoom.png)
    
