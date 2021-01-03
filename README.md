@@ -50,7 +50,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/StudyRoom.png)
    
 
-* Making New Chat Room
+* ### Making New Chat Room
 
    ![Screenshot](Snapshots/NewRoom.png)
    
