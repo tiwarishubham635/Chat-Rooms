@@ -19,7 +19,7 @@ This Application is designed to provide a platform for discussions and query res
   1. React.Js
   2. Firebase
 
-# To run the repository on the system:
+## To run the repository on the system:
   1. Clone the repository using "git clone https://github.com/tiwarishubham635/Chat-Rooms.git"
   2. Use "npm install" to install node_modules required.
   3. Use "npm start" to run the development server  
