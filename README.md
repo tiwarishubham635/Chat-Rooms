@@ -30,7 +30,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/Login.png)
    
 
-* Welcome Page (Just After Login)
+* ### Welcome Page (Just After Login)
 
    ![Screenshot](Snapshots/Welcome.png)
    
