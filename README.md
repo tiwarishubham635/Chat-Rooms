@@ -35,7 +35,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/Welcome.png)
    
 
-* Developers Chat Room
+* ### Developers Chat Room
 
    ![Screenshot](Snapshots/DevRoom.png)
    
