@@ -24,7 +24,7 @@ This Application is designed to provide a platform for discussions and query res
   2. Use "npm install" to install node_modules required.
   3. Use "npm start" to run the development server  
 
-# Snapshots of the Website
+## Snapshots of the Website
 * Login Page
 
    ![Screenshot](Snapshots/Login.png)
