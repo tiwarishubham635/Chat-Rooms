@@ -9,7 +9,8 @@ import {useParams} from 'react-router-dom';
 import db from './firebase';
 import {useStateValue} from './StateProvider';
 import firebase from 'firebase';
-import Picker, { SKIN_TONE_MEDIUM_DARK } from 'emoji-picker-react';
+import 'emoji-picker-element';
+import { createPopper } from '@popperjs/core';
 
 function Chat() {
 
@@ -45,6 +46,31 @@ function Chat() {
     const {roomId} = useParams();
     const [roomName, setRoomName] = useState('');
     const [messages, setMessages] = useState([]);
+
+    const [isText, setisText] = useState(true);
+
+    const toggleText = () => {
+        tooltip.classList.toggle('shown', false);
+        setisText(!isText);
+    }
+
+    const button = document.querySelector('IconButton');
+    const tooltip = document.querySelector('.tooltip');
+
+    // Pass the button, the tooltip, and some options, and Popper will do the
+    // magic positioning for you:
+    createPopper(button, tooltip, {
+    placement: 'right',
+    });
+
+  function toggle() {
+      tooltip.classList.toggle('shown');
+      setisText(true);
+  }
+
+  if(document.querySelector('emoji-picker'))
+    document.querySelector('emoji-picker')
+  .addEventListener('emoji-click', event => setInput(event.detail.emoji.unicode));
 
     useEffect(() => {
         if(roomId) {
@@ -83,10 +109,6 @@ function Chat() {
                     </IconButton>
 
                     <IconButton>
-                        <AttachFile/> {/* for attachements */}
-                    </IconButton>
-
-                    <IconButton>
                         <MoreVertIcon/>  {/* for options */}
                     </IconButton>
                 </div>
@@ -101,30 +123,28 @@ function Chat() {
                         <span className='chat_messageText'>
                                 {message.message}
                             </span>
-                            <span className='chat_timestamp'>
-                                {new Date(message.timestamp?.toDate()).toUTCString()}
-                            </span>
+
+                        <div className='chat_timestamp'>
+                                {new Date(message.timestamp?.toDate()).toString()}
+                        </div>
                     </div> 
                 ))}
-                
+                <div class="tooltip" role="tooltip">
+                    <emoji-picker></emoji-picker>
+                </div>
             </div>
 
             <div className='chat_footer'>
                 <IconButton>
-                    <InsertEmoticon onClick={handleChange}/>
+                    <InsertEmoticon onClick={toggle}/>
                 </IconButton>
-
-                {choice && 
-                    <div style={{marginTop: "-40vh"}}>
-                    <Picker onEmojiClick={onEmojiClick} skinTone={SKIN_TONE_MEDIUM_DARK}/>
-                    </div>
-                }
-                {/*chosenEmoji&&setInput(input+chosenEmoji.emoji)
-                    chosenEmoji&&console.log(input+chosenEmoji.emoji)*/
-                }   
+                
+                <IconButton>
+                        <AttachFile onClick={toggleText}/> {/* for attachements */}
+                    </IconButton>
 
                 <form>
-                    <input value={input} onChange={e=> setInput(e.target.value)} type='text' placeholder='Type a message'/>
+                    <input value={input} onChange={e=> setInput(e.target.value)} type={isText?'text':'file'} placeholder='Type a message'/>
                     <button onClick={sendMessage} type='submit'>Send</button>
                 </form>
 

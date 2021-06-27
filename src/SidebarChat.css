@@ -5,17 +5,36 @@
   border-bottom: 1px solid #f6f6f6;
 }
 
+.sidebarChat > button {
+  flex: 1;
+  font-size: 1.5vw;
+  background: none;
+  border: none;
+  margin: -20px;
+  height: 10vh;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.sidebarChat > button:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
+}
+
 a {
   text-decoration: none !important;
   color: black;
 }
 
 .sidebarChat:hover {
-  background-color: #CDCDCD;/*#e8ff7f;/*#c4d37f;/*#7289DA;*/
+  background-color: #cdcdcd; /*#e8ff7f;/*#c4d37f;/*#7289DA;*/
   color: black;
 }
 
 .sidebarChat_info {
+  width: 80%;
+  word-wrap: break-word;
   margin-left: 15px;
 }
 

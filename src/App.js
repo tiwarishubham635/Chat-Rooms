@@ -15,7 +15,8 @@ function App() {
       {!user ? (
         <Login/>
       ) : (
-        <div className='app_body'>
+        <div className='app_back'>
+            <div className='app_body'>
           <Router>
             <Sidebar/>
             <Switch>
@@ -31,6 +32,8 @@ function App() {
 
           </Router>
       </div>
+        </div>
+        
       )}
     </div>
   );

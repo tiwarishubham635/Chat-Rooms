@@ -1,13 +1,14 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  flex: 0.35; /* 35% of total width is of sidebar*/
+  flex: 0.5;
+  /* 35% of total width is of sidebar*/
 }
 
 .sidebar_header {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 1vw;
   /*border-right: 1px solid lightgrey;*/
 }
 
@@ -15,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 10vw; /* for responsive */
+  min-width: 10vw; /*for responsive */
 }
 
 .sidebar_headerRight > .MuiSvgIcon-root {
@@ -25,13 +26,32 @@
 }
 
 .sidebar_search {
-  display: flex;
+  /*display: flex;
   align-items: center;
-  /*background-color: #f6f6f6;*/
-  height: 39px;
-  padding: 10px;
+  background-color: red;
+  height: 3vh;
+  padding: 10px;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3vh;
+  padding: 1vw;
 }
 
+.sidebar_search > form {
+  flex: 1;
+  display: flex;
+}
+
+.sidebar_search > form > input {
+  flex: 1;
+  border-radius: 30px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: #cdcdcd;
+}
+/*
 .sidebar_searchContainer {
   display: flex;
   align-items: center;
@@ -42,19 +62,19 @@
 }
 
 .sidebar_searchContainer > input {
+  flex: 1;
   border: none;
   margin-left: 10px;
   background: #cdcdcd;
 }
 
-.sidebar_searchContainer > .MuiSvgIcon-root {
-  /* for icons*/
+.sidebar_search > form > .MuiSvgIcon-root {
   color: gray;
   padding: 10px;
-}
+}*/
 
 .sidebar_chats {
   flex: 1;
+  overflow: scroll;
   /*#3b5998;/*#7289DA;/*#4267B28/;/*#7289DA;*/
 }
-

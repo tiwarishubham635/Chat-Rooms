@@ -29,6 +29,25 @@ function Sidebar() {
 
     const [{ user }, dispatch] = useStateValue();
 
+    function myFunction() {
+        // Declare variables
+        var input, filter, a, i, txtValue;
+        input = document.getElementById('myInput');
+        console.log(input);
+        filter = input.value.toUpperCase();
+      
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < rooms.length; i++) 
+        {
+          console.log(rooms[i]);
+          /*if (a.toUpperCase().indexOf(filter) > -1) {
+            rooms[i].style.display = "";
+          } else {
+            rooms[i].style.display = "none";
+          }*/
+        }
+      }
+
     return (
         <div className='sidebar'>
             <div className='sidebar_header'>
@@ -48,11 +67,11 @@ function Sidebar() {
                 </div>
             </div>
             <div className='sidebar_search'>
-                <div className='sidebar_searchContainer'>
-                    <SearchOutlinedIcon/>
-                    <input placeholder='Search or start new chat' type = 'text'/>
-                </div>
+                <form>
+                    <input placeholder='Search or start new chat' type = 'text' />
+                </form>
             </div>
+
             <div className='sidebar_chats'>
                 <SidebarChat addNewChat/>
                 {rooms.map(room => (
