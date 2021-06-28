@@ -51,6 +51,10 @@
   outline: none;
   background: #cdcdcd;
 }
+
+.sidebar_search > form > button {
+  display: none; /*send by 'enter'*/
+}
 /*
 .sidebar_searchContainer {
   display: flex;

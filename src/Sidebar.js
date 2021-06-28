@@ -4,10 +4,11 @@ import {Avatar, IconButton} from '@material-ui/core'
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ChatIcon from '@material-ui/icons/Chat';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import SidebarChat from './SidebarChat';
 import db from './firebase';
 import {useStateValue} from './StateProvider';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 function Sidebar() {
     const [rooms, setRooms] = useState([]);
@@ -31,44 +32,69 @@ function Sidebar() {
 
     function myFunction() {
         // Declare variables
-        var input, filter, a, i, txtValue;
+        var input, filter, a, i, cl;
         input = document.getElementById('myInput');
-        console.log(input);
-        filter = input.value.toUpperCase();
-      
+        
+        if(input)
+            filter = input.value.toUpperCase();
+        //console.log('filter->', filter);
+
+        cl = document.querySelectorAll('.sidebarChat')
+        console.log('cl->',cl);
         // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < rooms.length; i++) 
+        for (i = 1; i < cl.length; i++) 
         {
-          console.log(rooms[i]);
-          /*if (a.toUpperCase().indexOf(filter) > -1) {
-            rooms[i].style.display = "";
-          } else {
-            rooms[i].style.display = "none";
-          }*/
+          a = cl[i].innerText;
+          if (a.toUpperCase().startsWith(filter)) {
+            cl[i].style.display = "";
+          }
+          else
+          {
+            cl[i].style.display = "none";
+          }
         }
       }
+
+      const createChat = () => {
+        const roomName = prompt('Enter name for the chat room');
+        if(roomName)
+        {
+            db.collection('rooms').add({
+                name: roomName,
+            })
+        }
+    };
 
     return (
         <div className='sidebar'>
             <div className='sidebar_header'>
                 <Avatar src={user?.photoURL}/>
                 <div className='sidebar_headerRight'>
-                    <IconButton>
-                        <DonutLargeIcon/> {/* for stories */}
-                    </IconButton>
+                    <Tooltip title='Stories'>
+                        <IconButton>
+                            <DonutLargeIcon/> {/* for stories */}
+                        </IconButton>
+                    </Tooltip>
+                    
+                    <Tooltip title='New Room'>
+                        <IconButton onClick={createChat}>
+                            <ChatIcon/>    {/* for groups */}
+                        </IconButton>
+                    </Tooltip>
+                    
 
-                    <IconButton>
-                        <ChatIcon/>    {/* for groups */}
-                    </IconButton>
-
-                    <IconButton>
-                        <MoreVertIcon/>  {/* for options */}
-                    </IconButton>
+                    <Tooltip title='More'>
+                        <IconButton>
+                            <MoreVertIcon/>  {/* for options */}
+                        </IconButton>
+                    </Tooltip>
+                    
                 </div>
             </div>
             <div className='sidebar_search'>
                 <form>
-                    <input placeholder='Search or start new chat' type = 'text' />
+                    <input placeholder='Search for a Chat Room' type = 'text' id='myInput' onChange={myFunction}/>
+                    <button type='submit'>Send</button>
                 </form>
             </div>
 

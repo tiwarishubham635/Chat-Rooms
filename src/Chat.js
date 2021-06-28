@@ -1,26 +1,47 @@
 import React, {useEffect, useState} from 'react'
 import './Chat.css';
 import {Avatar, IconButton} from '@material-ui/core';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import Tooltip from '@material-ui/core/Tooltip';
 import AttachFile from '@material-ui/icons/AttachFile'
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { InsertEmoticon, Mic } from '@material-ui/icons';
 import {useParams} from 'react-router-dom';
 import db from './firebase';
+import { auth} from './firebase';
 import {useStateValue} from './StateProvider';
 import firebase from 'firebase';
 import 'emoji-picker-element';
 import { createPopper } from '@popperjs/core';
+import { actionTypes } from './reducer';
 
 function Chat() {
 
     const [input, setInput] = useState('');
     const [{user}, dispatch] = useStateValue();
+
+    const signOut = () =>
+    {
+        auth.signOut().then(() => {
+            dispatch({
+                type: actionTypes.SET_USER,
+                user: auth.currentUser,
+            })
+           
+          }).catch((error) => {
+            // An error happened.
+          });
+    }
+    
+
     const sendMessage = (e) => {
         e.preventDefault();
-        console.log('you typed ',input);
+        //console.log('INPUT KI LENGTH DEKH ',input.length);
 
-        db.collection('rooms')
+        if(input.length>0)
+        {
+            db.collection('rooms')
           .doc(roomId)
           .collection('messages')
           .add({
@@ -29,9 +50,10 @@ function Chat() {
               timestamp: firebase.firestore.FieldValue.serverTimestamp(), 
           })
         setInput('');
+        }
     }
 
-    const [chosenEmoji, setChosenEmoji] = useState(null);
+    /*const [chosenEmoji, setChosenEmoji] = useState(null);
 
     const [choice, setChoice] = useState(false);
     const onEmojiClick = (event, emojiObject) => {
@@ -41,11 +63,23 @@ function Chat() {
       const handleChange = () => {
         console.log(choice);
         setChoice(!choice);
-      }
+      }*/
 
     const {roomId} = useParams();
     const [roomName, setRoomName] = useState('');
     const [messages, setMessages] = useState([]);
+
+    
+
+    const button = document.querySelector('IconButton');
+    const tooltip = document.querySelector('.tooltip');
+    const tooltipSearch = document.querySelector('.tooltipSearch');
+
+    // Pass the button, the tooltip, and some options, and Popper will do the
+    // magic positioning for you:
+    createPopper(button, tooltip, {
+    placement: 'right',
+    });
 
     const [isText, setisText] = useState(true);
 
@@ -54,18 +88,42 @@ function Chat() {
         setisText(!isText);
     }
 
-    const button = document.querySelector('IconButton');
-    const tooltip = document.querySelector('.tooltip');
-
-    // Pass the button, the tooltip, and some options, and Popper will do the
-    // magic positioning for you:
-    createPopper(button, tooltip, {
-    placement: 'right',
-    });
-
   function toggle() {
       tooltip.classList.toggle('shown');
       setisText(true);
+  }
+
+  function toggleSearch() {
+    tooltipSearch.classList.toggle('shown');
+}
+
+  function myFunction() {
+    // Declare variables
+    var input, filter, a, i, rec, send;
+    input = document.getElementById('searchChat');
+    if(input)
+        filter = input.value.toUpperCase();
+        console.log('filter->', filter);
+        
+
+        rec = document.querySelectorAll('.chat_message');
+
+        console.log('rec->',rec);
+        
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < rec.length; i++) 
+        {
+            a = rec[i].innerText;
+            
+            if(a.toUpperCase().indexOf(filter)!==-1) {
+                rec[i].style.display = "";
+            }
+            else
+            {
+                rec[i].style.display = "none";
+            }
+        }
+
   }
 
   if(document.querySelector('emoji-picker'))
@@ -89,6 +147,9 @@ function Chat() {
             );
         }
     }, [roomId])
+
+    //const d = new Date(messages[messages.length-1]?.timestamp?.toDate());
+    //console.log(d.getHours().toString()+':'+d.getMinutes().toString());
     
     return (
         <div className='chat'>
@@ -104,13 +165,27 @@ function Chat() {
                     </p>
                 </div>
                 <div className='chat_headerRight'>
+                <Tooltip title="Search">
                     <IconButton>
-                        <SearchOutlinedIcon/>    {/* for search */}
+                        <SearchOutlinedIcon onClick={toggleSearch}/>
                     </IconButton>
+                </Tooltip>
+                <div class="tooltipSearch" role="tooltip">
+                    <input placeholder='Search in this Chat Room' type = 'text' id='searchChat' onChange={myFunction}/>
+                </div>
 
+                <Tooltip title='Logout'>
+                    <IconButton>
+                        <ExitToAppIcon onClick={signOut}/> {/* sign out*/}
+                    </IconButton>
+                </Tooltip>
+
+                <Tooltip title='More'>
                     <IconButton>
                         <MoreVertIcon/>  {/* for options */}
                     </IconButton>
+                </Tooltip>
+                    
                 </div>
             </div>
 
@@ -135,22 +210,31 @@ function Chat() {
             </div>
 
             <div className='chat_footer'>
-                <IconButton>
-                    <InsertEmoticon onClick={toggle}/>
-                </IconButton>
                 
-                <IconButton>
-                        <AttachFile onClick={toggleText}/> {/* for attachements */}
-                    </IconButton>
-
+                    <Tooltip title="Emoji">
+                            <IconButton>
+                                <InsertEmoticon onClick={toggle}/>
+                            </IconButton>
+                    </Tooltip>
+                    
+                
+                    <Tooltip title="Attach">
+                        <IconButton>
+                            <AttachFile onClick={toggleText}/> {/* for attachements */}
+                        </IconButton>
+                    </Tooltip>
+                    
                 <form>
                     <input value={input} onChange={e=> setInput(e.target.value)} type={isText?'text':'file'} placeholder='Type a message'/>
                     <button onClick={sendMessage} type='submit'>Send</button>
                 </form>
 
-                <IconButton>
-                    <Mic/>
-                </IconButton>
+                <Tooltip title='Voice Text'>
+                    <IconButton>
+                        <Mic/>
+                    </IconButton>
+                </Tooltip>
+                
             </div>
         </div>
     )

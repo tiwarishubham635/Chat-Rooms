@@ -17,21 +17,21 @@ function App() {
       ) : (
         <div className='app_back'>
             <div className='app_body'>
-          <Router>
-            <Sidebar/>
-            <Switch>
-              <Route path = '/rooms/:roomId'>
-                <Chat/>
-              </Route>
+              <Router>
+                <Sidebar/>
+                <Switch>
+                  <Route path = '/rooms/:roomId'>
+                    <Chat/>
+                  </Route>
 
-              <Route path='/'>
-                <Welcome/>
-              </Route>
+                  <Route path='/'>
+                    <Welcome/>
+                  </Route>
 
-            </Switch>
-
-          </Router>
-      </div>
+                </Switch>
+                
+              </Router>
+          </div>
         </div>
         
       )}

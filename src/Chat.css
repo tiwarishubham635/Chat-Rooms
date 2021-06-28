@@ -63,6 +63,24 @@
   word-wrap: break-word;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltipSearch {
+  display: flex;
+  align-items: center;
+}
+
+.tooltipSearch > input {
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: lightgrey;
+}
+
 .floater {
   float: right;
 }
@@ -93,6 +111,10 @@
 }
 
 .tooltip:not(.shown) {
+  display: none;
+}
+
+.tooltipSearch:not(.shown) {
   display: none;
 }
 
