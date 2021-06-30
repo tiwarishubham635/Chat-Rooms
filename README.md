@@ -39,9 +39,9 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/DevRoom.png)
    
 
-* ### Dance Chat Room
+* ### Search Option
 
-   ![Screenshot](Snapshots/DanceRoom.png)
+   ![Screenshot](Snapshots/Search.png)
    
 
 * ### Study Chat Room
