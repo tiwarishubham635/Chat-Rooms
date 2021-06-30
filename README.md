@@ -47,6 +47,7 @@ This Application is designed to provide a platform for discussions and query res
 * ### Upload files
 
    ![Screenshot](Snapshots/Attach.png)
+   ![Screenshot](Snapshots/Upload.png)
    
 
 * ### Making New Chat Room
