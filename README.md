@@ -42,6 +42,7 @@ This Application is designed to provide a platform for discussions and query res
 * ### Search Option
 
    ![Screenshot](Snapshots/Search.png)
+   ![Screenshot](Snapshots/Tooltip.png)
    
 
 * ### Upload files
