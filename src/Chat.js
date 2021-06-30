@@ -99,14 +99,14 @@ function Chat() {
 
   function myFunction() {
     // Declare variables
-    var input, filter, a, i, rec, send;
+    var input, filter, a, i, rec;
     input = document.getElementById('searchChat');
     if(input)
         filter = input.value.toUpperCase();
         console.log('filter->', filter);
         
 
-        rec = document.querySelectorAll('.chat_message');
+        rec = document.querySelectorAll('.chat_messageText');
 
         console.log('rec->',rec);
         
@@ -123,12 +123,11 @@ function Chat() {
                 rec[i].style.display = "none";
             }
         }
-
   }
 
   if(document.querySelector('emoji-picker'))
     document.querySelector('emoji-picker')
-  .addEventListener('emoji-click', event => setInput(event.detail.emoji.unicode));
+  .addEventListener('emoji-click', event => {event.preventDefault();setInput(input+event.detail.emoji.unicode);});
 
     useEffect(() => {
         if(roomId) {
