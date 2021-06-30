@@ -106,7 +106,7 @@ function Chat() {
         console.log('filter->', filter);
         
 
-        rec = document.querySelectorAll('.chat_messageText');
+        rec = document.querySelectorAll('.chat_message');
 
         console.log('rec->',rec);
         
