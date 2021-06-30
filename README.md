@@ -8,12 +8,11 @@ https://whatsapp-clone-ea11a.web.app/
 This Application is designed to provide a platform for discussions and query resolution regarding topics like Development, Competitive Coding, Dance or Studies in general etc. It has been designed on the lines of the WhatsApp Clone.
 
 ## Salient features:
-  1. Login through Google Authentication.
+  1. Login and Logout through Google Authentication.
   2. Dedicated Chat Rooms for discussions and query resolution.
-  3. Feature to add new chat rooms.
+  3. Features to create new chat rooms, search chat rooms, search in chats and upload files.
   4. Animations in the background.
   5. Emoji Picker for chats.
-  6. Complete chatting application.
 
 ## This Application is made using:
   1. React.Js
