@@ -44,9 +44,9 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/Search.png)
    
 
-* ### Study Chat Room
+* ### Upload files
 
-   ![Screenshot](Snapshots/StudyRoom.png)
+   ![Screenshot](Snapshots/Attach.png)
    
 
 * ### Making New Chat Room
