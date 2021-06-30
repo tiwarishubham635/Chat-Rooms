@@ -39,7 +39,7 @@ This Application is designed to provide a platform for discussions and query res
    ![Screenshot](Snapshots/DevRoom.png)
    
 
-* ### Search Option
+* ### Search Option and Tooltips
 
    ![Screenshot](Snapshots/Search.png)
    ![Screenshot](Snapshots/Tooltip.png)
