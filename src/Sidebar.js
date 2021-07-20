@@ -31,17 +31,14 @@ function Sidebar() {
     const [{ user }, dispatch] = useStateValue();
 
     function myFunction() {
-        // Declare variables
         var input, filter, a, i, cl;
         input = document.getElementById('myInput');
         
         if(input)
             filter = input.value.toUpperCase();
-        //console.log('filter->', filter);
 
         cl = document.querySelectorAll('.sidebarChat')
-        console.log('cl->',cl);
-        // Loop through all list items, and hide those who don't match the search query
+       
         for (i = 1; i < cl.length; i++) 
         {
           a = cl[i].innerText;
