@@ -37,7 +37,6 @@ function Chat() {
 
     const sendMessage = (e) => {
         e.preventDefault();
-        //console.log('INPUT KI LENGTH DEKH ',input.length);
 
         if(input.length>0)
         {
@@ -53,18 +52,6 @@ function Chat() {
         }
     }
 
-    /*const [chosenEmoji, setChosenEmoji] = useState(null);
-
-    const [choice, setChoice] = useState(false);
-    const onEmojiClick = (event, emojiObject) => {
-        setChosenEmoji(emojiObject);
-    }
-
-      const handleChange = () => {
-        console.log(choice);
-        setChoice(!choice);
-      }*/
-
     const {roomId} = useParams();
     const [roomName, setRoomName] = useState('');
     const [messages, setMessages] = useState([]);
@@ -75,8 +62,7 @@ function Chat() {
     const tooltip = document.querySelector('.tooltip');
     const tooltipSearch = document.querySelector('.tooltipSearch');
 
-    // Pass the button, the tooltip, and some options, and Popper will do the
-    // magic positioning for you:
+    
     createPopper(button, tooltip, {
     placement: 'right',
     });
@@ -98,7 +84,6 @@ function Chat() {
 }
 
   function myFunction() {
-    // Declare variables
     var input, filter, a, i, rec;
     input = document.getElementById('searchChat');
     if(input)
@@ -110,7 +95,6 @@ function Chat() {
 
         console.log('rec->',rec);
         
-        // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < rec.length; i++) 
         {
             a = rec[i].innerText;
@@ -147,8 +131,6 @@ function Chat() {
         }
     }, [roomId])
 
-    //const d = new Date(messages[messages.length-1]?.timestamp?.toDate());
-    //console.log(d.getHours().toString()+':'+d.getMinutes().toString());
     
     return (
         <div className='chat'>
