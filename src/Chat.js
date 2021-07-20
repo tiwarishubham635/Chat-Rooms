@@ -83,23 +83,69 @@ function Chat() {
     tooltipSearch.classList.toggle('shown');
 }
 
+    var MAX = 256;
+    var t = new Array(256);
+    var horsPool = function (haystack, needle)
+    {
+        var nl = needle.length;
+        if(nl===0)
+            return 0;
+        var hl = haystack.length;
+        var skip = 0;
+        while (skip <=hl-nl)
+        {
+            var i = nl - 1;
+            while (haystack[skip + i] === needle[i])
+            {
+                if (i === 0) 
+                    return skip;
+                i--;
+            }
+            skip = skip + t[haystack.charCodeAt(skip + nl - 1)];
+        }
+        return - 1;
+    }
+    /*
+    txt = habcad
+          s  i
+    pat = abca
+    t
+    a->0
+    b->2
+    c->1
+     */
+
+    var shiftTable = function (pattern)
+    {
+        var i;
+        for (i = 0; i < MAX; i++) {
+            t[i] = pattern.length;
+        }
+        for (i = 0; i < pattern.length - 1; i++) {
+            t[pattern.charCodeAt(i)] = pattern.length - 1 - i;
+        }
+    }
+
   function myFunction() {
     var input, filter, a, i, rec;
     input = document.getElementById('searchChat');
-    if(input)
+    if(input)   
         filter = input.value.toUpperCase();
-        console.log('filter->', filter);
+        //console.log('filter->', filter);
         
 
         rec = document.querySelectorAll('.chat_message');
 
-        console.log('rec->',rec);
+        //console.log('rec->',rec);
         
         for (i = 0; i < rec.length; i++) 
         {
             a = rec[i].innerText;
+            var text = a.toUpperCase();
+            shiftTable(filter);
+            var pos = horsPool(text, filter);
             
-            if(a.toUpperCase().indexOf(filter)!==-1) {
+            if(pos!==-1) {
                 rec[i].style.display = "";
             }
             else
