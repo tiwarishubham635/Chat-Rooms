@@ -83,67 +83,97 @@ function Chat() {
     tooltipSearch.classList.toggle('shown');
 }
 
-    var MAX = 256;
-    var t = new Array(256);
-    var horsPool = function (haystack, needle)
+    var LPSArray = function(pattern)
     {
-        var nl = needle.length;
-        if(nl===0)
-            return 0;
-        var hl = haystack.length;
-        var skip = 0;
-        while (skip <=hl-nl)
+        var n = pattern.length;
+        var len = 0, i = 1;
+        var lps = [];
+        lps.length = n;
+        lps[0] = 0;
+        while(i<n)
         {
-            var i = nl - 1;
-            while (haystack[skip + i] === needle[i])
+            if(pattern[i]===pattern[len])
             {
-                if (i === 0) 
-                    return skip;
-                i--;
+                len++;
+                lps[i] = len;
+                i++;
             }
-            skip = skip + t[haystack.charCodeAt(skip + nl - 1)];
-        }
-        return - 1;
-    }
-    /*
-    txt = habcad
-          s  i
-    pat = abca
-    t
-    a->0
-    b->2
-    c->1
-     */
 
-    var shiftTable = function (pattern)
+            else
+            {
+                if(len===0)
+                {
+                    lps[i] = 0;
+                    i++;
+                }
+                
+                else
+                    len = lps[len-1];
+            }
+        }
+        return lps;
+    }
+
+    var KMP = function (text, pattern)
     {
-        var i;
-        for (i = 0; i < MAX; i++) {
-            t[i] = pattern.length;
-        }
-        for (i = 0; i < pattern.length - 1; i++) {
-            t[pattern.charCodeAt(i)] = pattern.length - 1 - i;
-        }
-    }
+        var n = text.length;
+        var m = pattern.length;
 
+        var lps = LPSArray(pattern);
+
+        var i = 0, j = 0;
+        while(i<n)
+        {
+            if(text[i]===pattern[j])
+            {
+                i++;
+                j++;
+            }
+
+            else
+            {
+                if(j===0)
+                    i++;
+                
+                else
+                    j = lps[j-1];
+            }
+
+            if(j===m)
+            {
+                return i-j;
+            }
+        }
+
+        return -1;
+    }
+    
   function myFunction() {
     var input, filter, a, i, rec;
     input = document.getElementById('searchChat');
     if(input)   
         filter = input.value.toUpperCase();
-        //console.log('filter->', filter);
+
+        if(typeof filter === "undefined")
+        {
+            for (i = 0; i < rec.length; i++) 
+                rec[i].style.display = "";
+            
+            return;
+        }
+        console.log('filter->', filter);
         
 
         rec = document.querySelectorAll('.chat_message');
 
-        //console.log('rec->',rec);
+        console.log('rec->',rec);
         
         for (i = 0; i < rec.length; i++) 
         {
-            a = rec[i].innerText;
+            a = rec[i].children[1].innerText;
             var text = a.toUpperCase();
-            shiftTable(filter);
-            var pos = horsPool(text, filter);
+            //shiftTable(filter);
+            var pos = KMP(text, filter);
             
             if(pos!==-1) {
                 rec[i].style.display = "";
