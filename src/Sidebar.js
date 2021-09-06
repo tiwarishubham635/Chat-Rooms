@@ -12,7 +12,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 function Sidebar() {
     const [rooms, setRooms] = useState([]);
-    const [{ user }, dispatch] = useStateValue();
     useEffect(() => {
         const unsubscribe = db.collection('rooms').onSnapshot((snapshot)=>
             setRooms(
@@ -29,6 +28,7 @@ function Sidebar() {
         }
     }, [])
 
+    const [{ user }, dispatch] = useStateValue();
 
     function myFunction() {
         var input, filter, a, i, cl;
