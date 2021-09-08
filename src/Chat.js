@@ -15,11 +15,14 @@ import firebase from 'firebase';
 import 'emoji-picker-element';
 import { createPopper } from '@popperjs/core';
 import { actionTypes } from './reducer';
+import validator from 'validator';
 
 function Chat() {
 
     const [input, setInput] = useState('');
     const [{user}, dispatch] = useStateValue();
+
+    console.log(`isURL(): `, validator.isURL("htt//www.geeksforgeeks.org/how-to-validate-url-in-react/"));
 
     const signOut = () =>
     {
