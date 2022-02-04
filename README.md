@@ -1,5 +1,6 @@
 # Chat Rooms 2.0 
-An Application for Chats and Discussions - Updated in June 2021
+* ### An Application for Chats and Discussions - Updated in June 2021
+   ![Screenshot](Snapshots/Welcome.png)
 
 ## Demo
 https://whatsapp-clone-ea11a.web.app/
